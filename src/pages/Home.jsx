@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import LineChart from "../components/Line";
 
 const Home = () => {
   return (
@@ -7,7 +8,7 @@ const Home = () => {
       <Helmet>
         <title>this is home page</title>
       </Helmet>
-      <div>home</div>
+       <LineChart/>
     </>
   );
 };
