@@ -28,16 +28,15 @@ const center = {
   lng: -79.3832,
 };
 
-const Home = () => {
+const Map = () => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyCIP2gFBWK0kxyEL5OFarGGfwlSkaiqC2c",
     libraries,
   });
   const [markers, setMarkers] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
-  console.log(markers,"selected lat lng")
+  console.log(markers, "selected lat lng");
 
-  
   // const results =markers.map((marker)=>getGeocode({location:{lat:marker.lat,lng:marker.lng}}))
   // console.log(results[0],"results")
 
@@ -48,10 +47,10 @@ const Home = () => {
           getGeocode({ location: { lat: marker.lat, lng: marker.lng } })
         )
       );
-  
+
       const formattedResults = results.map((result) => {
         const addressComponents = result[0].address_components;
-  
+
         // Extract city (locality) and country
         const cityComponent = addressComponents.find((component) =>
           component.types.includes("locality")
@@ -59,19 +58,21 @@ const Home = () => {
         const countryComponent = addressComponents.find((component) =>
           component.types.includes("country")
         );
-  
+
         return {
           city: cityComponent ? cityComponent.long_name : "Unknown City",
-          country: countryComponent ? countryComponent.long_name : "Unknown Country",
+          country: countryComponent
+            ? countryComponent.long_name
+            : "Unknown Country",
         };
       });
-  
+
       console.log(formattedResults, "City and Country results");
     } catch (error) {
       console.error("Error fetching geocode results:", error);
     }
   };
-  
+
   // Call this function when markers change
   React.useEffect(() => {
     if (markers.length > 0) {
@@ -79,14 +80,11 @@ const Home = () => {
     }
   }, [markers]);
 
-
   // const results = getGeocode({location:{lat:markers.lat,lng:markers.lng}})
 
- 
-
   const onMapClick = React.useCallback((e) => {
-    console.log(e.latLng.lat(),"latitude")
-    console.log(e.latLng.lng(),"longitude")
+    console.log(e.latLng.lat(), "latitude");
+    console.log(e.latLng.lng(), "longitude");
     setMarkers((current) => [
       // ...current,
       {
@@ -178,7 +176,7 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Map;
 
 const Locate = ({ panTo }) => {
   return (
