@@ -1,8 +1,11 @@
 import React from 'react'
+import DoughnutChart from '../components/Doughnut'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>
+      <DoughnutChart/>
+    </div>
   )
 }
 
