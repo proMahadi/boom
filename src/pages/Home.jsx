@@ -1,10 +1,12 @@
 import React from 'react'
 import DoughnutChart from '../components/Doughnut'
+import AreaChart from '../components/Area'
 
 const Home = () => {
   return (
     <div>
-      <DoughnutChart/>
+      {/* <DoughnutChart/> */}
+      <AreaChart/>
     </div>
   )
 }
