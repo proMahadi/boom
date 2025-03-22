@@ -36,6 +36,11 @@ const AreaChart = () => {
         text: "Chart.js Line Chart",
       },
     },
+    elements: { // to curve the lines
+      line: {
+          tension: 0.5,
+      },
+  },
   };
 
   const labels = [
